@@ -26,13 +26,13 @@ __Structural Patterns__: 结构模式
 | Pattern | Description |
 |:-------:| ----------- |
 | [3-tier](structural/3-tier.py) | data<->business logic<->presentation separation (strict relationships) |
-| [adapter](structural/adapter.py) | adapt one interface to another using a white-list |
+| [adapter 适配器](structural/adapter.py) | adapt one interface to another using a white-list |
 | [bridge](structural/bridge.py) | a client-provider middleman to soften interface changes |
-| [composite](structural/composite.py) | lets clients treat individual objects and compositions uniformly |
-| [decorator](structural/decorator.py) | wrap functionality with other functionality in order to affect outputs |
-| [facade](structural/facade.py) | use one class as an API to a number of others |
-| [flyweight](structural/flyweight.py) | transparently reuse existing instances of objects with similar/identical state |
-| [front_controller](structural/front_controller.py) | single handler requests coming to the application |
+| [composite 合成](structural/composite.py) | lets clients treat individual objects and compositions uniformly |
+| [decorator 装饰器](structural/decorator.py) | wrap functionality with other functionality in order to affect outputs |
+| [facade 门面](structural/facade.py) | use one class as an API to a number of others |
+| [flyweight 轻量级](structural/flyweight.py) | transparently reuse existing instances of objects with similar/identical state |
+| [front_controller 前端控制器](structural/front_controller.py) | single handler requests coming to the application |
 | [mvc](structural/mvc.py) | model<->view<->controller (non-strict relationships) |
 | [proxy](structural/proxy.py) | an object funnels operations to something else |
 
