@@ -1,27 +1,27 @@
 python-patterns
 ===============
 
-A collection of design patterns and idioms in Python.
+A collection of design patterns and idioms惯用语法 in Python.
 
 When an implementation is added or modified, be sure to update this file and
-rerun `append_output.sh` (eg. ./append_output.sh borg.py) to keep the output
+rerun重新运行 `append_output.sh` (eg. ./append_output.sh borg.py) to keep the output
 comments at the bottom up to date.
 
 Current Patterns:
 
-__Creational Patterns__:
+__Creational Patterns__: 创作模式
 
 | Pattern | Description |
 |:-------:| ----------- |
-| [abstract_factory](creational/abstract_factory.py) | use a generic function with specific factories |
-| [borg](creational/borg.py) | a singleton with shared-state among instances |
-| [builder](creational/builder.py) | instead of using multiple constructors, builder object receives parameters and returns constructed objects |
-| [factory_method](creational/factory_method.py) | delegate a specialized function/method to create instances |
+| [abstract_factory 抽象工厂](creational/abstract_factory.py) | use a generic function with specific factories |
+| [borg](creational/borg.py) or Monostate 单态 | a singleton with shared-state among instances 实例之间具有共享状态的单例 |
+| [builder](creational/builder.py) | instead of using multiple constructors, builder object receives parameters and returns constructed objects 生成器对象不使用多个构造函数，而是接收参数并返回构造的对象 |
+| [factory_method](creational/factory_method.py) | delegate a specialized function/method to create instances 委托专门的功能/方法来创建实例 |
 | [lazy_evaluation](creational/lazy_evaluation.py) | lazily-evaluated property pattern in Python |
-| [pool](creational/pool.py) | preinstantiate and maintain a group of instances of the same type |
-| [prototype](creational/prototype.py) | use a factory and clones of a prototype for new instances (if instantiation is expensive) |
+| [pool](creational/pool.py) | preinstantiate and maintain a group of instances of the same type 预先实例化并维护一组相同类型的实例 |
+| [prototype](creational/prototype.py) | use a factory and clones of a prototype for new instances (if instantiation is expensive) 使用工厂和原型的克隆用于新实例（如果实例化非常昂贵） |
 
-__Structural Patterns__:
+__Structural Patterns__: 结构模式
 
 | Pattern | Description |
 |:-------:| ----------- |
