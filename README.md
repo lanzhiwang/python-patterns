@@ -50,7 +50,7 @@ __Behavioral Patterns__: 行为模式
 | [observer](behavioral/observer.py) 观察者模式 | provide a callback for notification of events/changes to data |
 | [publish_subscribe](behavioral/publish_subscribe.py) 发布订阅模式 | a source syndicates events/data to 0+ registered listeners |
 | [registry](behavioral/registry.py) 注册模式 | keep track of all subclasses of a given class |
-| [specification](behavioral/specification.py) 规格模式 |  business rules can be recombined by chaining the business rules together using boolean logic |
+| [specification](behavioral/specification.py) ~~规格模式~~ |  business rules can be recombined by chaining the business rules together using boolean logic |
 | [state](behavioral/state.py) 状态模式 | logic is organized into a discrete number of potential states and the next state that can be transitioned to |
 | [strategy](behavioral/strategy.py) 策略模式 | selectable operations over the same data |
 | [template](behavioral/template.py) 模板模式 | an object imposes a structure but takes pluggable components |

@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from __future__ import print_function
-
 
 class Person(object):
-
     def __init__(self, name, action):
         self.name = name
         self.action = action
@@ -16,7 +13,6 @@ class Person(object):
 
 
 class Action(object):
-
     def __init__(self, name):
         self.name = name
 
@@ -33,6 +29,3 @@ if __name__ == '__main__':
     move = Action('move')
     person = Person('Jack', move)
     person.do_action().amount('5m').stop()
-
-### OUTPUT ###
-# Jack move 5m then stop
