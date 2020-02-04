@@ -8,6 +8,7 @@ class Request:
     def setname(self, value):
         self.name += value
 
+
 class Response:
     def __init__(self, result):
         self.result = result
@@ -36,18 +37,18 @@ class Middleware:
 midd = Middleware()
 
 request = Request("request")
-print request.getname() # request
+print(request.getname())  # request
 
 request = midd.process_request(request)
-print request.getname() # request|Row_request|
+print(request.getname())  # request|Row_request|
 
 result = request.getname()
-print result # request|Row_request|
+print(result)  # request|Row_request|
 
 response = Response(result)
-print response.getresult() # request|Row_request|
+print(response.getresult())  # request|Row_request|
 
 request, response = midd.process_response(request, response)
-print response.getresult() # request|Row_request||Row_response|
+print(response.getresult())  # request|Row_request||Row_response|
 
-print response.getresult() # request|Row_request||Row_response|
+print(response.getresult())  # request|Row_request||Row_response|

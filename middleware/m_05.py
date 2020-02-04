@@ -8,6 +8,7 @@ class Request:
     def setname(self, value):
         self.name += value
 
+
 class Response:
     def __init__(self, result):
         self.result = result
@@ -18,51 +19,59 @@ class Response:
     def setresult(self, value):
         self.result += value
 
-class MiddlewareMixin:
-    def __init__(self, get_response=None):
-        self.get_response = get_response
-        super(MiddlewareMixin, self).__init__()
 
-    def __call__(self, request):
-        response = None
-        if hasattr(self, 'process_request'):
-            response = self.process_request(request)
-        response = response or self.get_response(request)
-        if hasattr(self, 'process_response'):
-            request, response = self.process_response(request, response)
-        return request, response
+class RegistryHolder(type):
 
-class Middleware01(MiddlewareMixin):
+    REGISTRY = []
 
-    def __init__(self, get_response=None):
-        pass
+    def __new__(cls, name, bases, attrs):
+        new_cls = type.__new__(cls, name, bases, attrs)  # new_cls = super(RegistryHolder, cls).__new__(cls, name, bases, attrs)
+        cls.REGISTRY.append(new_cls)
+        return new_cls
 
-    def process_request(self, request):
-        request.setname("|Row1_request|")
-        return request
+    @classmethod
+    def get_registry(cls):
+        return cls.REGISTRY
 
-    def process_response(self, request, response):
-        response.setresult("|Row1_response|")
-        return request, response
 
-class Middleware02(MiddlewareMixin):
+class Middleware(metaclass=RegistryHolder):
+    def __init__(self, request, response):
+        self.request = request
+        self.response = response
 
-    def __init__(self, get_response=None):
-        pass
+    def __call__(self):
+        for midd in RegistryHolder.get_registry():
+            if midd(self.request, self.response).__class__.__name__ == self.__class__.__name__:
+                continue
+            midd(self.request, self.response).process_request()
 
-    def process_request(self, request):
-        request.setname("|Row2_request|")
-        return request
+        self.response = Response(self.request.getname())
 
-    def process_response(self, request, response):
-        response.setresult("|Row2_response|")
-        return request, response
+        for midd in RegistryHolder.get_registry():
+            if midd(self.request, self.response).__class__.__name__ == self.__class__.__name__:
+                continue
+            midd(self.request, self.response).process_response()
+        return self.request, self.response
 
-midds = [Middleware01, Middleware02]
+
+class Middleware01(Middleware):
+    def process_request(self):
+        self.request.setname("|Row1_request|")
+
+    def process_response(self):
+        self.response.setresult("|Row1_response|")
+
+
+class Middleware02(Middleware):
+    def process_request(self):
+        self.request.setname("|Row2_request|")
+
+    def process_response(self):
+        self.response.setresult("|Row2_response|")
+
 
 request = Request("request1")
 response = None
-for midd in midds:
-    request, response = midd(request)
-
-print response.getresult()
+midd = Middleware(request, response)
+request, response = midd()
+print(response.getresult())

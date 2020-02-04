@@ -8,6 +8,7 @@ class Request:
     def setname(self, value):
         self.name += value
 
+
 class Response:
     def __init__(self, result):
         self.result = result
@@ -32,6 +33,7 @@ class Middleware01:
         response.setresult("|Row1_response|")
         return request, response
 
+
 class Middleware02:
 
     def __init__(self):
@@ -45,33 +47,25 @@ class Middleware02:
         response.setresult("|Row2_response|")
         return request, response
 
-# midds = [Middleware01, Middleware02]
-midd01 = Middleware01()
-midd02 = Middleware02()
+
+midds = [Middleware01(), Middleware02()]
 
 request = Request("request1")
-print request.getname() # request1
+print(request.getname())  # request1
 
-# for midd in midds:
-#     m = midd()
-#     m.process_request(request)
-
-request = midd01.process_request(request)
-print request.getname() # request1|Row1_request|
-
-request = midd02.process_request(request)
-print request.getname() # request1|Row1_request||Row2_request|
+for midd in midds:
+    request = midd.process_request(request)
 
 result = request.getname()
-print result # request1|Row1_request||Row2_request|
+print(result)  # request1|Row1_request||Row2_request|
+
 
 response = Response(result)
-print response.getresult() # request1|Row1_request||Row2_request|
+print(response.getresult())  # request1|Row1_request||Row2_request|
 
-request, response = midd01.process_response(request, response)
-print response.getresult() # request1|Row1_request||Row2_request||Row1_response|
 
-request, response = midd02.process_response(request, response)
-print response.getresult() # request1|Row1_request||Row2_request||Row1_response||Row2_response|
+for midd in midds:
+    request, response = midd.process_response(request, response)
 
-print response.getresult() # request1|Row1_request||Row2_request||Row1_response||Row2_response|
+print(request.getname())  # request1|Row1_request||Row2_request|
+print(response.getresult())  # request1|Row1_request||Row2_request||Row1_response||Row2_response|
