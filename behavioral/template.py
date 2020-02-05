@@ -27,7 +27,7 @@ def rev_elements(getter, action):
     for element in getter()[::-1]:
         action(element)
         print(line)
-k
+
 
 # Getters
 def get_list():
