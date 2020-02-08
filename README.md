@@ -72,7 +72,7 @@ __Others__:
 
 | Pattern | Description |
 |:-------:| ----------- |
-| [blackboard](other/blackboard.py) 黑板模式 | architectural model, assemble different sub-system knowledge to build a solution, AI approach - non gang of four pattern |
+| [blackboard](other/blackboard.py) ~~黑板模式~~ | architectural model, assemble different sub-system knowledge to build a solution, AI approach - non gang of four pattern |
 | [graph_search](other/graph_search.py) 图搜索模式 | graphing algorithms - non gang of four pattern |
 | [hsm](other/hsm/hsm.py) hierarchical state machine 层次状态机 | hierarchical state machine - non gang of four pattern |
 
