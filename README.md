@@ -53,7 +53,7 @@ __Behavioral Patterns__: 行为模式
 | [specification](behavioral/specification.py) ~~规格模式~~ |  business rules can be recombined by chaining the business rules together using boolean logic |
 | [state](behavioral/state.py) 状态模式 | logic is organized into a discrete number of potential states and the next state that can be transitioned to |
 | [strategy](behavioral/strategy.py) 策略模式 | selectable operations over the same data |
-| [template](behavioral/template.py) ~~模板模式~~ | an object imposes a structure but takes pluggable components |
+| [template](behavioral/template.py) 模板模式 | an object imposes a structure but takes pluggable components |
 | [visitor](behavioral/visitor.py) 访问者模式 | invoke a callback for all items of a collection |
 
 __Design for Testability Patterns__:
