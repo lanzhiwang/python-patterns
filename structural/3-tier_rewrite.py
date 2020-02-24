@@ -12,7 +12,7 @@ class Data(object):
     }
 
     def __get__(self, obj, klas):
-        print("(Fetching from Data Store)")
+        print("(Fetching from Data Store)", obj)
         return {'products': self.products}
 
 
@@ -40,7 +40,7 @@ class Ui(object):
     def get_product_list(self):
         print('PRODUCT LIST:')
         for product in self.business_logic.product_list():
-            print(product)
+            print(product)  2
         print('')
 
     def get_product_information(self, product):
@@ -62,29 +62,28 @@ def main():
     ui.get_product_information('eggs')
     ui.get_product_information('milk')
     ui.get_product_information('arepas')
+"""
+PRODUCT LIST:
+(Fetching from Data Store)
+milk
+eggs
+cheese
 
-    """
-    PRODUCT LIST:
-    (Fetching from Data Store)
-    milk
-    eggs
-    cheese
-    
-    (Fetching from Data Store)
-    PRODUCT INFORMATION:
-    Name: Cheese, Price: 2.00, Quantity: 10
-    
-    (Fetching from Data Store)
-    PRODUCT INFORMATION:
-    Name: Eggs, Price: 0.20, Quantity: 100
-    
-    (Fetching from Data Store)
-    PRODUCT INFORMATION:
-    Name: Milk, Price: 1.50, Quantity: 10
-    
-    (Fetching from Data Store)
-    That product "arepas" does not exist in the records
-    """
+(Fetching from Data Store)
+PRODUCT INFORMATION:
+Name: Cheese, Price: 2.00, Quantity: 10
+
+(Fetching from Data Store)
+PRODUCT INFORMATION:
+Name: Eggs, Price: 0.20, Quantity: 100
+
+(Fetching from Data Store)
+PRODUCT INFORMATION:
+Name: Milk, Price: 1.50, Quantity: 10
+
+(Fetching from Data Store)
+That product "arepas" does not exist in the records
+"""
 
 
 if __name__ == '__main__':

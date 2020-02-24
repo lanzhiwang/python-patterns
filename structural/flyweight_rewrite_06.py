@@ -45,6 +45,15 @@ def with_metaclass(meta, *bases):
     return temp
 
 
+"""
+python2
+class Foo():
+    __metaclass__ = type
+
+python3
+class Foo(metaclass=type):
+    pass
+"""
 class Card2(with_metaclass(FlyweightMeta)):
     """
     Card2 = Card2(FlyweightMeta("NewBase", bases, {}))

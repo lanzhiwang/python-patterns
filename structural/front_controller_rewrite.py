@@ -2,16 +2,40 @@
 # -*- coding: utf-8 -*-
 
 
-class MobileView(object):
+class Request(object):
+    """
+    Request('mobile')
+    Request('tablet')
+    Request('desktop')
+    """
 
-    def show_index_page(self):
-        print('Displaying mobile index page')
+    mobile_type = 'mobile'
+    tablet_type = 'tablet'
+
+    def __init__(self, request):
+        self.type = None
+        request = request.lower()
+        if request == self.mobile_type:
+            self.type = self.mobile_type
+        elif request == self.tablet_type:
+            self.type = self.tablet_type
 
 
-class TabletView(object):
+class RequestController(object):
+    """
+    front_controller = RequestController()
+    front_controller.dispatch_request(Request('mobile'))
+    front_controller.dispatch_request(Request('tablet'))
+    """
 
-    def show_index_page(self):
-        print('Displaying tablet index page')
+    def __init__(self):
+        self.dispatcher = Dispatcher()
+
+    def dispatch_request(self, request):
+        if isinstance(request, Request):
+            self.dispatcher.dispatch(request)
+        else:
+            print('request must be a Request object')
 
 
 class Dispatcher(object):
@@ -29,32 +53,16 @@ class Dispatcher(object):
             print('cant dispatch the request')
 
 
-class RequestController(object):
-    """ front controller """
+class MobileView(object):
 
-    def __init__(self):
-        self.dispatcher = Dispatcher()
-
-    def dispatch_request(self, request):
-        if isinstance(request, Request):
-            self.dispatcher.dispatch(request)
-        else:
-            print('request must be a Request object')
+    def show_index_page(self):
+        print('Displaying mobile index page')
 
 
-class Request(object):
-    """ request """
+class TabletView(object):
 
-    mobile_type = 'mobile'
-    tablet_type = 'tablet'
-
-    def __init__(self, request):
-        self.type = None
-        request = request.lower()
-        if request == self.mobile_type:
-            self.type = self.mobile_type
-        elif request == self.tablet_type:
-            self.type = self.tablet_type
+    def show_index_page(self):
+        print('Displaying tablet index page')
 
 
 if __name__ == '__main__':

@@ -2,6 +2,34 @@
 # -*- coding: utf-8 -*-
 
 
+class Controller(object):
+    """
+    model = ProductModel()
+    view = ConsoleView()
+    controller = Controller(model, view)
+    """
+    def __init__(self, model, view):
+        self.model = model
+        self.view = view
+
+    def show_items(self):
+        # 获取model中的数据
+        items = list(self.model)
+        item_type = self.model.item_type
+
+        # 将获取到的数据以参数的形式传入view用于展示
+        self.view.show_item_list(item_type, items)
+
+    def show_item_information(self, item_name):
+        try:
+            item_info = self.model.get(item_name)
+            item_type = self.model.item_type
+        except:
+            self.view.item_not_found(item_type, item_name)
+        else:
+            self.view.show_item_information(item_type, item_name, item_info)
+
+
 class Model(object):
 
     def __iter__(self):
@@ -89,31 +117,6 @@ class ConsoleView(View):
     def item_not_found(self, item_type, item_name):
         print('That %s "%s" does not exist in the records' %
               (item_type, item_name))
-
-
-class Controller(object):
-
-    def __init__(self, model, view):
-        self.model = model
-        self.view = view
-
-    def show_items(self):
-        # 获取model中的数据
-        items = list(self.model)
-        item_type = self.model.item_type
-
-        # 将获取到的数据以参数的形式传入view用于展示
-        self.view.show_item_list(item_type, items)
-
-    def show_item_information(self, item_name):
-        try:
-            item_info = self.model.get(item_name)
-        except:
-            item_type = self.model.item_type
-            self.view.item_not_found(item_type, item_name)
-        else:
-            item_type = self.model.item_type
-            self.view.show_item_information(item_type, item_name, item_info)
 
 
 if __name__ == '__main__':

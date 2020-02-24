@@ -83,3 +83,13 @@ __web  框架中间件实现方法__:
 __ORM  框架实现__:
 
 [orm](./orm/)
+
+### 元类编程示例:
+
+* [flyweight](structural/flyweight.py) 享元模式
+
+
+
+
+
+
