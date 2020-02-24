@@ -2,24 +2,13 @@
 # -*- coding : utf-8 -*-
 
 
-class Director(object):
-    """
-    director = Director()
-    director.builder = BuilderHouse()
-    director.construct_building()
-    building = director.get_building()
-    print(building)
-    """
+class Building(object):
     def __init__(self):
-        self.builder = None
+        self.floor = None
+        self.size = None
 
-    def construct_building(self):
-        self.builder.new_building()
-        self.builder.build_floor()
-        self.builder.build_size()
-
-    def get_building(self):
-        return self.builder.building
+    def __repr__(self):
+        return 'Floor: {0.floor} | Size: {0.size}'.format(self)
 
 
 class Builder(object):
@@ -52,13 +41,24 @@ class BuilderFlat(Builder):
         self.building.size = 'Small'
 
 
-class Building(object):
+class Director(object):
+    """
+    director = Director()
+    director.builder = BuilderHouse()
+    director.construct_building()
+    building = director.get_building()
+    print(building)
+    """
     def __init__(self):
-        self.floor = None
-        self.size = None
+        self.builder = None
 
-    def __repr__(self):
-        return 'Floor: {0.floor} | Size: {0.size}'.format(self)
+    def construct_building(self):
+        self.builder.new_building()
+        self.builder.build_floor()
+        self.builder.build_size()
+
+    def get_building(self):
+        return self.builder.building
 
 
 if __name__ == "__main__":

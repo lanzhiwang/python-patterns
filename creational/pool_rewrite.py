@@ -9,16 +9,19 @@ class ObjectPool(object):
         self.item = self._queue.get() if auto_get else None
 
     def __enter__(self):
+        print('__enter__')
         if self.item is None:
             self.item = self._queue.get()
         return self.item
 
     def __exit__(self, Type, value, traceback):
+        print('__exit__')
         if self.item is not None:
             self._queue.put(self.item)
             self.item = None
 
     def __del__(self):
+        print('__del__')
         if self.item is not None:
             self._queue.put(self.item)
             self.item = None
@@ -33,7 +36,11 @@ def main():
     sample_queue = queue.Queue()
 
     sample_queue.put('yam')
-    with ObjectPool(sample_queue) as obj:
+    op = ObjectPool(sample_queue)
+    with op as obj:
+        print('Inside with: {}'.format(obj))  # Inside with: yam
+
+    with op as obj:
         print('Inside with: {}'.format(obj))  # Inside with: yam
 
     print('Outside with: {}'.format(sample_queue.get()))  # Outside with: yam
@@ -52,3 +59,17 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+"""
+__enter__
+Inside with: yam
+__exit__
+__enter__
+Inside with: yam
+__exit__
+Outside with: yam
+Inside func: sam
+__del__
+Outside func: sam
+__del__
+"""

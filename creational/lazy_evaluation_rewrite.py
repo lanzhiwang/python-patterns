@@ -27,7 +27,7 @@ class lazy_property(object):
 def lazy_property2(fn):
     attr = '_lazy__' + fn.__name__
 
-    @property
+    # @property
     def _lazy_property(self):
         if not hasattr(self, attr):
             setattr(self, attr, fn(self))
@@ -84,3 +84,15 @@ def main():
 
 if __name__ == '__main__':
     main()
+"""
+john Coder
+Before we access `relatives`:
+{'name': 'john', 'occupation': 'Coder', 'call_count2': 0}
+Many relatives.
+After we've accessed `relatives`:
+{'name': 'john', 'occupation': 'Coder', 'call_count2': 0, 'relatives': 'Many relatives.'}
+<bound method lazy_property2.<locals>._lazy_property of <__main__.Person object at 0x10258c7b8>>
+{'name': 'john', 'occupation': 'Coder', 'call_count2': 0, 'relatives': 'Many relatives.'}
+<bound method lazy_property2.<locals>._lazy_property of <__main__.Person object at 0x10258c7b8>>
+0
+"""

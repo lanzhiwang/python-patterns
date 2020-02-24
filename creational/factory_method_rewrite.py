@@ -25,9 +25,9 @@ if __name__ == '__main__':
     g = get_localizer(language="Greek")
     for msgid in ['dog', 'parrot', 'cat', 'bear']:
         print(e.get(msgid), g.get(msgid))
-    """
-    dog σκύλος
-    parrot parrot
-    cat γάτα
-    bear bear
-    """
+"""
+dog σκύλος
+parrot parrot
+cat γάτα
+bear bear
+"""
