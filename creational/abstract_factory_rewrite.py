@@ -56,17 +56,17 @@ if __name__ == "__main__":
         shop = PetShop(get_factory())
         shop.show_pet()
         print("=" * 20)
-        """
-        Cat
-        meow
-        cat food
-        ====================
-        Dog
-        woof
-        dog food
-        ====================
-        Cat
-        meow
-        cat food
-        ====================
-        """
+"""
+Cat
+meow
+cat food
+====================
+Dog
+woof
+dog food
+====================
+Cat
+meow
+cat food
+====================
+"""
