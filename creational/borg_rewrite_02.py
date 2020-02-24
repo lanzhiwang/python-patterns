@@ -41,7 +41,6 @@ if __name__ == '__main__':
     print("=" * 20)
 
     rm2.state = 'Running'
-
     print(rm2)  # Running
     print(rm2.__dict__)  # {'state': 'Running'}
     print(Borg.shared_state)  # {'state': 'Running'}
