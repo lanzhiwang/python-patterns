@@ -12,6 +12,13 @@ class Catalog(object):
     def __init__(self, param):
         self._static_method_choices = {'param_value_1': self._static_method_1,
                                        'param_value_2': self._static_method_2}
+        # print(self._static_method_choices)
+        """
+        {
+            'param_value_1': <function Catalog._static_method_1 at 0x1090a22f0>,
+            'param_value_2': <function Catalog._static_method_2 at 0x1090a2378>
+        }
+        """
 
         if param in self._static_method_choices.keys():
             self.param = param
@@ -27,6 +34,7 @@ class Catalog(object):
         print("executed method 2!")
 
     def main_method(self):
+        print(self._static_method_choices[self.param])  # <function Catalog._static_method_1 at 0x105ccd2f0>
         self._static_method_choices[self.param]()
 
 

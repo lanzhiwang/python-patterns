@@ -10,6 +10,13 @@ class CatalogStatic(object):
 
     def __init__(self, param):
         # simple test to validate param value
+        # print(self._static_method_choices)
+        """
+        {
+            'param_value_1': <staticmethod object at 0x10cc60240>,
+            'param_value_2': <staticmethod object at 0x10cc60278>
+        }
+        """
         if param in self._static_method_choices:
             self.param = param
         else:
@@ -30,6 +37,14 @@ class CatalogStatic(object):
         """will execute either _static_method_1 or _static_method_2
 
         depending on self.param value
+        """
+        # print(self._static_method_choices[self.param])
+        """
+        <staticmethod object at 0x1077bd240>
+        """
+        # print(self._static_method_choices[self.param].__get__(None, self.__class__))
+        """
+        <function CatalogStatic._static_method_1 at 0x1077c52f0>
         """
         self._static_method_choices[self.param].__get__(None, self.__class__)()
 
