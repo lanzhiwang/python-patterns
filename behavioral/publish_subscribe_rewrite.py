@@ -7,6 +7,7 @@ Author: https://github.com/HanWenfang
 """
 
 
+# 提供者
 class Provider:
     """
     message_center = Provider()
@@ -69,10 +70,14 @@ class Subscriber:
     def run(self, msg):
         print("{} got {}".format(self.name, msg))
 
+    def __repr__(self):
+        return 'Subscriber name: %s' % self.name
+
 
 def main():
     message_center = Provider()
     fftv = Publisher(message_center)
+
     jim = Subscriber("jim", message_center)
     jim.subscribe("cartoon")
 
@@ -81,10 +86,21 @@ def main():
 
     gee = Subscriber("gee", message_center)
     gee.subscribe("movie")
+    gee.subscribe("music")
 
     vani = Subscriber("vani", message_center)
     vani.subscribe("movie")
     vani.unsubscribe("movie")
+
+    print(message_center.subscribers)
+    """
+    []
+    {
+        'cartoon': [Subscriber name: jim],
+        'music': [Subscriber name: jack, Subscriber name: gee],
+        'movie': [Subscriber name: gee]
+    }
+    """
 
     fftv.publish("cartoon")
     fftv.publish("music")
@@ -94,6 +110,10 @@ def main():
     fftv.publish("cartoon")
     fftv.publish("movie")
     fftv.publish("blank")
+    print(message_center.msg_queue)
+    """
+    ['cartoon', 'music', 'ads', 'movie', 'cartoon', 'cartoon', 'movie', 'blank']
+    """
 
     message_center.update()
 

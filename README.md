@@ -87,6 +87,7 @@ __ORM  框架实现__:
 ### 元类编程示例:
 
 * [flyweight](structural/flyweight.py) 享元模式
+* [registry](behavioral/registry.py) 注册模式
 
 
 
